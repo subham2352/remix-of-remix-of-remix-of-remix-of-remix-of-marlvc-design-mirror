@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { X } from "lucide-react";
+import { companyLogos } from "@/data/portfolioLogos";
 
 const companies = [
   { name: "Advanced Robotics", desc: "Developing a Robotic system to help pharmacy store owners autonomously dispense medications", cohort: "Cohort 1" },
@@ -136,7 +138,7 @@ const useCountUp = (end: number, duration: number, start: boolean) => {
 
 const Portfolio = () => {
   const [active, setActive] = useState("Show all");
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [selectedCompany, setSelectedCompany] = useState<typeof companies[0] | null>(null);
   const filtered = active === "Show all" ? companies : companies.filter((c) => c.cohort === active);
 
   return (
@@ -209,7 +211,23 @@ const Portfolio = () => {
                 >
                   {/* Logo area */}
                   <div className="aspect-square bg-[#fafafa] flex items-center justify-center p-6 relative overflow-hidden">
-                    <span className="text-5xl font-display font-bold text-navy-deep/10 select-none">
+                    {companyLogos[company.name] ? (
+                      <img 
+                        src={companyLogos[company.name]} 
+                        alt={company.name}
+                        className="max-w-full max-h-full object-contain"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const fallback = target.nextElementSibling as HTMLElement;
+                          if (fallback) fallback.style.display = 'block';
+                        }}
+                      />
+                    ) : null}
+                    <span 
+                      className="text-5xl font-display font-bold text-navy-deep/10 select-none"
+                      style={{ display: companyLogos[company.name] ? 'none' : 'block' }}
+                    >
                       {company.name.charAt(0)}
                     </span>
                   </div>
@@ -233,7 +251,7 @@ const Portfolio = () => {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          setExpandedCard(expandedCard === company.name ? null : company.name);
+                          setSelectedCompany(company);
                         }}
                         className="text-primary hover:text-primary/70 text-sm font-medium transition-colors"
                       >
@@ -241,31 +259,101 @@ const Portfolio = () => {
                       </button>
                     </div>
                   </div>
-
-                  {/* Expanded Read More content */}
-                  <AnimatePresence>
-                    {expandedCard === company.name && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-5 pb-5 pt-2 border-t border-border">
-                          <p className="text-navy-deep/70 text-sm leading-relaxed">
-                            {company.desc}
-                          </p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
                 </motion.div>
               ))}
             </AnimatePresence>
           </div>
         </div>
       </section>
+
+      {/* Company Detail Modal */}
+      <AnimatePresence>
+        {selectedCompany && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedCompany(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative shadow-2xl"
+            >
+              <div className="p-8 pt-12 relative">
+                {/* Close button */}
+                <button 
+                  onClick={() => setSelectedCompany(null)}
+                  className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors"
+                >
+                  <X size={18} />
+                </button>
+                
+                {/* Company logo */}
+                <div className="text-center mb-6 mt-2">
+                  {companyLogos[selectedCompany.name] ? (
+                    <img 
+                      src={companyLogos[selectedCompany.name]} 
+                      alt={selectedCompany.name}
+                      className="max-w-[200px] max-h-[100px] object-contain mx-auto mb-4"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 bg-[#fafafa] rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl font-display font-bold text-navy-deep/30">
+                        {selectedCompany.name.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+                  <h2 className="text-2xl font-bold text-navy-deep mb-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    {selectedCompany.name}
+                  </h2>
+                </div>
+
+                {/* Company details */}
+                <div className="space-y-4 text-left">
+                  <div className="border-b border-gray-200 pb-3">
+                    <span className="text-gray-500 text-sm font-medium">Cohort:</span>
+                    <span className="ml-2 text-navy-deep">{selectedCompany.cohort.replace("Cohort ", "")}</span>
+                  </div>
+                  
+                  <div className="border-b border-gray-200 pb-3">
+                    <span className="text-gray-500 text-sm font-medium">Name of the founder:</span>
+                    <span className="ml-2 text-navy-deep">To be updated</span>
+                  </div>
+                  
+                  <div className="border-b border-gray-200 pb-3">
+                    <span className="text-gray-500 text-sm font-medium">Vertical:</span>
+                    <span className="ml-2 text-navy-deep">Enterprise Technology</span>
+                  </div>
+                  
+                  <div className="border-b border-gray-200 pb-3">
+                    <span className="text-gray-500 text-sm font-medium">Description:</span>
+                    <span className="ml-2 text-navy-deep block mt-1">{selectedCompany.desc}</span>
+                  </div>
+                  
+                  <div className="border-b border-gray-200 pb-3">
+                    <span className="text-gray-500 text-sm font-medium">Contact email:</span>
+                    <span className="ml-2 text-navy-deep">info@example.com</span>
+                  </div>
+                  
+                  <div className="border-b border-gray-200 pb-3">
+                    <span className="text-gray-500 text-sm font-medium">Website:</span>
+                    <span className="ml-2 text-navy-deep">www.example.com</span>
+                  </div>
+                  
+                  <div>
+                    <span className="text-gray-500 text-sm font-medium">Operations location:</span>
+                    <span className="ml-2 text-navy-deep">United States</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* CTA */}
       <section className="py-20 bg-navy-deep text-center">
