@@ -1,71 +1,49 @@
 
 
-# VC Accelerator Website — Inspired by MARL's Design
+# Download All Real Images from marlvc.com
 
-A multi-page venture capital / accelerator website with a modern, professional design using a dark navy, orange, and teal color palette similar to MARL's style. Placeholder branding will be used throughout so you can easily swap in your own brand later.
+## Overview
+Replace all placeholder/generic photos with the actual images from marlvc.com across the following sections:
+- Founders community carousel (3 rows, ~34 founders)
+- Testimonials section (add real profile photos)
+- About page team section (download team photos from the homepage or use available data)
 
----
+## Step 1: Download All Founder Photos from marlvc.com
 
-## Page 1: Homepage (Landing Page)
+Download real founder images from the original site using their direct URLs:
 
-- **Navigation Bar** — Sticky top nav with logo placeholder, dropdown menus for Programs, About Us, Resources, and links to Verticals, Portfolio, Demo Day. Orange "Apply Now" CTA button on the right.
-- **Hero Section** — Large bold typography with animated text rotation (e.g., "FOUNDERS / INVESTING IN / FOUNDERS"). Tagline below: "We invest in the next generation of founders re-shaping the world of enterprise." Scroll-down indicator.
-- **"We Invest In" Marquee** — Two horizontal scrolling marquee strips showing investment verticals (Robotics, Logistics, AI, Cybersecurity, Mobility, AR/VR) with teal-colored text and dot separators, scrolling in opposite directions.
-- **Founder Community Carousel** — Grid/carousel of founder cards with placeholder photos, names, and company names. Cards link to the Portfolio page.
-- **About Section** — Brief description of the accelerator with social media links (LinkedIn, X/Twitter).
-- **Stats Section ("Why Partner With Us")** — Animated counter stats: Corporate Partners (60+), Follow-on VC Partners (150+), Industry Mentors (80+).
-- **Program Highlights Marquee** — Scrolling cards showing key program benefits: $500K Perks & Benefits, 12-Week Tailored Program, 15+ Investor Meetings, $50K Pre-Seed Investment.
-- **Testimonials Carousel** — Rotating testimonial cards with quotes, photos, names, and titles from founders and partners.
-- **CTA Section** — "Are you ready to build next-gen tech?" with application deadline and "Apply Now" button.
-- **Footer** — Logo, navigation links, social links, disclaimers.
+**Row 1 (12 founders)** - from `marlvc.com/wp-content/uploads/2024/12/`:
+- 1.jpg (Max Montrey), 2.jpg (Srinivas K. Pai), 3.jpg (Matthew Gill), 4.jpg (Vinitha Thiyagarajan), 5.jpg (Victor Martin), 6.jpg (Shay Williams), 7.jpg (Abhra Banerjee), 8.jpg (David Hojah), 9.jpg (Ali Salem), 10.jpg (Soner Matt), 11.jpg (Adam Beal), 12.jpg (Noam Heimann)
 
-## Page 2: Programs
+**Row 2 (10 founders)** - from `marlvc.com/wp-content/uploads/2025/01/`:
+- 8.png (Ashutosh Srivastava), 9.png (Ricardo Ortiz Sordo), 10.png (Ewelina Robaczek), 11.png (Michael Du), 12.png (Bart Slowik), 7.png (Valentin Prijilevschi), 6.png (Fatima Awan), 5.png (Samir Hassan), 1.png (Nathalie Taquet), 4.png (Michael Bingham)
 
-- Overview of accelerator program offerings
-- Program structure breakdown (timeline, benefits, investment details)
-- Eligibility criteria and application process
+**Row 3 (12 founders)** - from `marlvc.com/wp-content/uploads/2025/01/`:
+- Untitled-design-49-1.png (Michael Gurevich), 50-1.png (Volker Dahm), 51-1.png (Tara Robinson), 52-1.png (B Bhushan Mishra), 53-1.png (Havish Sreenath), 54-1.png (Steve Scully), 55-1.png (Nida Sahar), 56-1.png (Lalit Gautam), 57-1.png (Mithun Adith), 58-1.png (Aparna Pujar), 59-1.png (Rohit Sharma), 60-2.png (Navin Jethani)
 
-## Page 3: Verticals
+All saved to `src/assets/founders/` with descriptive filenames.
 
-- Cards or sections for each investment vertical: Robotics, Logistics, AI, Cybersecurity, Mobility, AR/VR
-- Brief description of focus areas within each vertical
+## Step 2: Update FoundersSection.tsx
 
-## Page 4: Portfolio
+- Update the founders array to include all 34 founders across 3 rows
+- Replace the static grid with a 3-row auto-scrolling carousel matching marlvc.com (Row 1 scrolls left, Row 2 scrolls right, Row 3 scrolls left)
+- Each row uses CSS animation for infinite smooth scrolling
+- Import all downloaded images
 
-- Grid of portfolio company cards with founder photos, names, and company names
-- Filterable by vertical/cohort
-- Individual card details on click
+## Step 3: Add Testimonial Photos
 
-## Page 5: About Us
+Download profile photos for the testimonial authors from marlvc.com (extracted from the testimonial section HTML) and save to `src/assets/founders/`:
+- Max Montrey (already have), Pratik Budhdev, Hans Hansen, Vinitha Thiyagarajan (already have), Abhra Banerjee (already have), Lalit Gautam, Samantha Tenus, Vladimir Rigenco
 
-- Team section with photos and bios of managing partners
-- Mission and vision statement
-- Company history/timeline
+Update `TestimonialsSection.tsx` to display the real photos instead of initial-letter circles.
 
-## Page 6: Demo Day
+## Step 4: Update About Page Team Photos
 
-- Information about upcoming demo day events
-- Past demo day highlights
-- Registration or interest form (UI only)
+The team page on marlvc.com returns 404, so team member photos (Amir Khan, Prakash Goswami, Daniela Lugo, Jeffrey Bekiares) are not available from the site. Update `About.tsx` to use professional placeholder avatars with proper styling matching the marlvc.com aesthetic.
 
-## Page 7: Resources
-
-- Blog/articles section with card layout
-- Resource links and downloads
-- News and updates
-
-## Page 8: Apply Now
-
-- Multi-section application form (UI only, no backend)
-- Fields for company info, founder details, pitch description
-- Visual progress indicator
-
----
-
-## Design System
-
-- **Colors**: Dark navy (#1B2A4A), orange (#FF6B00) for CTAs, teal (#2ABFBF) for accents, white backgrounds for content sections
-- **Typography**: Clean sans-serif font (Inter or similar), bold uppercase headings
-- **Animations**: Smooth scroll, marquee text scrolling, counter animations, hover effects on cards and buttons
-- **Responsive**: Fully mobile-responsive with hamburger menu on smaller screens
+## Files to Create/Edit
+- ~30 new image files in `src/assets/founders/`
+- `src/components/home/FoundersSection.tsx` - complete rewrite with 3-row carousel
+- `src/components/home/TestimonialsSection.tsx` - add photo imports and display
+- `src/pages/About.tsx` - minor styling updates
 
