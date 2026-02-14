@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin } from "lucide-react";
+import marlLogo from "@/assets/marl-logo.png";
 
 const Footer = () => {
   return (
@@ -8,14 +9,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-lg">M</span>
-              </div>
-              <div className="flex flex-col leading-tight">
-                <span className="text-navy-deep font-display font-bold text-xl tracking-[0.15em]">MARL</span>
-                <span className="text-navy-deep/50 text-[10px] tracking-[0.1em]">accelerator</span>
-              </div>
+            <Link to="/" className="flex items-center">
+              <img src={marlLogo} alt="MARL Accelerator" className="h-10 w-auto" />
             </Link>
             <div className="flex gap-3 pt-2">
               <a href="https://www.linkedin.com/company/marl/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-navy-deep/10 hover:bg-primary hover:text-white transition-colors flex items-center justify-center text-navy-deep/50">
