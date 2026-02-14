@@ -33,13 +33,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Verticals */}
-          <div className="space-y-4">
-            <h4 className="text-navy-deep font-display font-semibold text-sm">Verticals</h4>
-            <div className="space-y-2">
-              <Link to="/verticals" className="block text-sm hover:text-primary transition-colors">Industry Verticals</Link>
-            </div>
-          </div>
+
 
           {/* About Us */}
           <div className="space-y-4">
@@ -51,14 +45,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Resources */}
-          <div className="space-y-4">
-            <h4 className="text-navy-deep font-display font-semibold text-sm">Resources</h4>
-            <div className="space-y-2">
-              <Link to="/resources" className="block text-sm hover:text-primary transition-colors">Blog</Link>
-              <Link to="/resources#podcast" className="block text-sm hover:text-primary transition-colors">Podcast</Link>
-            </div>
-          </div>
+
+
         </div>
 
         <div className="mt-12 pt-8 border-t border-navy-deep/10 flex flex-col md:flex-row justify-between items-center gap-4">
