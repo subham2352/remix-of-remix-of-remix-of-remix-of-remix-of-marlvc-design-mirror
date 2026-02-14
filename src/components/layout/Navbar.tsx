@@ -6,23 +6,16 @@ import { cn } from "@/lib/utils";
 import marlLogo from "@/assets/marl-logo.png";
 
 const navLinks = [
-  {
-    label: "Programs",
-    href: "/programs",
-    dropdown: [
-      { label: "Accelerator", href: "/programs" },
-      { label: "Studio", href: "/programs#studio" },
-      { label: "FAQs", href: "/programs#faqs" },
-    ],
-  },
   { label: "Verticals", href: "/verticals" },
-  { label: "Portfolio", href: "/portfolio" },
+  {
+    label: "Our Portfolio",
+    href: "/portfolio",
+  },
   {
     label: "About Us",
     href: "/about",
     dropdown: [
       { label: "Our Team", href: "/about" },
-      { label: "Our Mentors", href: "/about#mentors" },
       { label: "Our Partners", href: "/about#partners" },
     ],
   },
