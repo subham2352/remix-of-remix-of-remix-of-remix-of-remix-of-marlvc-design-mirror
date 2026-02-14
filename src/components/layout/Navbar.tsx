@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import marlLogo from "@/assets/marl-logo.png";
 
 const navLinks = [
-  { label: "Verticals", href: "/verticals" },
   {
     label: "Our Portfolio",
     href: "/portfolio",
@@ -20,14 +19,6 @@ const navLinks = [
     ],
   },
   { label: "Demo Day", href: "/demo-day" },
-  {
-    label: "Resources",
-    href: "/resources",
-    dropdown: [
-      { label: "Blog", href: "/resources" },
-      { label: "Podcast", href: "/resources#podcast" },
-    ],
-  },
 ];
 
 const Navbar = () => {
