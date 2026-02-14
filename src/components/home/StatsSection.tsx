@@ -5,7 +5,6 @@ const stats = [
   { label: "Corporate Partners", value: 60, suffix: "+" },
   { label: "Follow-on VC Partners", value: 150, suffix: "+" },
   { label: "Industry Mentors", value: 80, suffix: "+" },
-  { label: "Portfolio Companies", value: 45, suffix: "+" },
 ];
 
 const useCountUp = (end: number, duration: number, start: boolean) => {
@@ -46,17 +45,17 @@ const StatCard = ({ label, value, suffix, index }: { label: string; value: numbe
       transition={{ delay: index * 0.1 }}
       className="text-center p-8"
     >
-      <div className="font-display text-5xl md:text-6xl font-bold text-primary mb-2">
-        {count}{suffix}
+      <p className="text-navy-deep/60 font-medium text-sm uppercase tracking-wider mb-2">{label}</p>
+      <div className="font-display text-5xl md:text-7xl font-bold text-navy-deep">
+        +{count}
       </div>
-      <p className="text-white/60 font-medium text-sm uppercase tracking-wider">{label}</p>
     </motion.div>
   );
 };
 
 const StatsSection = () => {
   return (
-    <section className="py-20 bg-navy">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -64,13 +63,12 @@ const StatsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <p className="text-teal font-display text-sm uppercase tracking-[0.3em] mb-3">Why Partner With Us</p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-white">
-            Our <span className="text-primary">Impact</span>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-navy-deep">
+            WHY PARTNER WITH US?
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat, i) => (
             <StatCard key={i} {...stat} index={i} />
           ))}
