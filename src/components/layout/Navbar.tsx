@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import marlLogo from "@/assets/marl-logo.png";
+import marlLogo from "@/assets/marl-logo.avif";
 
 const navLinks = [
   {
@@ -42,7 +42,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-[72px]">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={marlLogo} alt="MARL Accelerator" className="h-9 w-auto" />
+            <img src={marlLogo} alt="MARL Accelerator" className="w-[175px] h-auto" />
           </Link>
 
           {/* Desktop Nav */}
