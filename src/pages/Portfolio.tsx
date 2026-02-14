@@ -356,16 +356,6 @@ const Portfolio = () => {
                         <span className="ml-2 text-navy-deep">{details?.location || "United States"}</span>
                       </div>
 
-                      <div>
-                        <a 
-                          href={details?.marlPage || "#"} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 text-sm font-medium"
-                        >
-                          View on MARL <ExternalLink size={14} />
-                        </a>
-                      </div>
                     </div>
                   );
                 })()}
