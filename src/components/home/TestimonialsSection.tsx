@@ -20,6 +20,12 @@ const testimonials = [
     img: null,
   },
   {
+    quote: "As a long-term mentor and supporter of MARL, I am intrigued by their strong ethos of working hand-in-hand with founding teams and guiding them through the journey. Their hands-on guidance, strong focus on mobility and related sectors, entrepreneurial experience, excellent corporate and mentor network differentiates them from players.",
+    name: "Garrett Goldberg",
+    title: "Managing Partner, Bee Partners",
+    img: null,
+  },
+  {
     quote: "In just a few months with MARL 5G, we've already made substantial progress. Their mentors provide actionable insights from their own entrepreneurial journeys, and their robust investor network is highly aligned with our specific focus. The GTM framework they offer stands out for its efficacy, streamlining our path to market.",
     name: "Hans Hansen",
     title: "Founder of Brand3D",

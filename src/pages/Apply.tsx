@@ -23,8 +23,18 @@ const Apply = () => {
               Apply Now
             </h1>
             <p className="text-white/80 text-lg leading-relaxed">
-              Application deadline: March 20th, 2026 for Cohort 13th. Complete the form below to apply.
+              If you are a driven founder working on frontier technology in the DeepTech sector we would like to hear from you. Take your company to the next level by participating in our program.
             </p>
+            <div className="mt-8">
+              <a
+                href="https://www.f6s.com/marl-accelerator-spring-2026-cohort/apply"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white text-teal font-semibold px-8 py-3 rounded-full hover:bg-white/90 transition-colors"
+              >
+                Apply on F6S
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
