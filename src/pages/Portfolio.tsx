@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -110,12 +110,12 @@ const companies = [
 const cohorts = ["Show all", "Cohort 1", "Cohort 2", "Cohort 3", "Cohort 4", "Cohort 5", "Cohort 6", "Cohort 7", "Cohort 8", "Cohort 9", "Cohort 10", "Cohort 11", "Cohort 12", "Studio"];
 
 const historyStats = [
-  { label: "Companies", value: 70 },
-  { label: "Cohorts", value: 12 },
-  { label: "Total Portfolio Value", value: 85, prefix: "$", suffix: "M" },
-  { label: "Female Founders", value: 25 },
-  { label: "People of Color (POCs)", value: 60 },
-  { label: "Immigrant Founders", value: 45 },
+  { label: "Companies", value: 96 },
+  { label: "Cohorts", value: 11 },
+  { label: "Total Portfolio Value", value: 163, prefix: "$", suffix: "M" },
+  { label: "Female Founders", value: 28 },
+  { label: "People of Color (POCs)", value: 46 },
+  { label: "Immigrant Founders", value: 43 },
 ];
 
 const useCountUp = (end: number, duration: number, start: boolean) => {
@@ -136,15 +136,16 @@ const useCountUp = (end: number, duration: number, start: boolean) => {
 
 const Portfolio = () => {
   const [active, setActive] = useState("Show all");
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const filtered = active === "Show all" ? companies : companies.filter((c) => c.cohort === active);
 
   return (
     <Layout>
       {/* Teal gradient hero */}
-      <section className="bg-gradient-to-br from-teal to-teal/80 py-32 lg:py-44">
+      <section className="relative py-32 lg:py-44 overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(var(--teal)) 0%, hsl(var(--teal) / 0.75) 100%)" }}>
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-wide">
               OUR PORTFOLIO
             </h1>
             <p className="text-white/90 text-lg leading-relaxed font-medium">
@@ -160,7 +161,7 @@ const Portfolio = () => {
       {/* Our History Stats */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-navy-deep mb-12 text-center">OUR HISTORY</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-navy-deep mb-12 text-center uppercase">OUR HISTORY</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {historyStats.map((stat, i) => (
               <HistoryStatCard key={i} {...stat} index={i} />
@@ -170,17 +171,19 @@ const Portfolio = () => {
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-16 bg-muted">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           {/* Cohort Filters */}
-          <div className="flex flex-wrap gap-2 mb-10">
+          <div className="flex flex-wrap gap-2 mb-10 justify-center">
             {cohorts.map((f) => (
               <button
                 key={f}
                 onClick={() => setActive(f)}
                 className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-colors",
-                  active === f ? "bg-primary text-primary-foreground" : "bg-white text-navy-deep/60 hover:text-navy-deep border border-border"
+                  "px-4 py-2.5 rounded-[10px] text-sm font-light transition-all",
+                  active === f
+                    ? "bg-primary text-white"
+                    : "bg-navy-deep text-white/90 hover:bg-primary"
                 )}
               >
                 {f}
@@ -188,27 +191,78 @@ const Portfolio = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filtered.map((company, i) => (
-              <motion.div
-                key={company.name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.02 }}
-                className="group bg-white rounded-xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-lg transition-all cursor-pointer"
-              >
-                <div className="aspect-square bg-gradient-to-br from-navy-deep to-navy flex items-center justify-center">
-                  <span className="text-4xl font-display font-bold text-white/10 group-hover:text-primary/20 transition-colors">
-                    {company.name.charAt(0)}
-                  </span>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-display font-bold text-navy-deep text-sm mb-1">{company.name}</h3>
-                  <p className="text-muted-foreground text-xs mb-2 line-clamp-2">{company.desc}</p>
-                  <span className="text-xs bg-teal/10 text-teal px-2 py-0.5 rounded-full">{company.cohort}</span>
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            <AnimatePresence mode="popLayout">
+              {filtered.map((company) => (
+                <motion.div
+                  key={company.name}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-white rounded-[15px] overflow-hidden cursor-pointer"
+                  style={{
+                    boxShadow: "0 0.8px 2.4px -0.6px rgba(0,0,0,0.05), 0 2.4px 7.2px -1.25px rgba(0,0,0,0.05), 0 6.4px 19px -1.9px rgba(0,0,0,0.05), 0 20px 60px -2.5px rgba(0,0,0,0.05)",
+                  }}
+                >
+                  {/* Logo area */}
+                  <div className="aspect-square bg-[#fafafa] flex items-center justify-center p-6 relative overflow-hidden">
+                    <span className="text-5xl font-display font-bold text-navy-deep/10 select-none">
+                      {company.name.charAt(0)}
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5">
+                    <h3 className="font-semibold text-navy-deep text-lg mb-2" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                      {company.name}
+                    </h3>
+                    <div className="min-h-[80px] max-h-[80px] overflow-hidden mb-3">
+                      <p className="text-navy-deep/60 text-sm leading-relaxed">
+                        {company.desc}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <ul className="list-none m-0 p-0">
+                        <li className="bg-teal/10 text-teal text-xs text-center rounded-[10px] px-2 py-1">
+                          {company.cohort}
+                        </li>
+                      </ul>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpandedCard(expandedCard === company.name ? null : company.name);
+                        }}
+                        className="text-primary hover:text-primary/70 text-sm font-medium transition-colors"
+                      >
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Expanded Read More content */}
+                  <AnimatePresence>
+                    {expandedCard === company.name && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 pb-5 pt-2 border-t border-border">
+                          <p className="text-navy-deep/70 text-sm leading-relaxed">
+                            {company.desc}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       </section>
@@ -247,7 +301,7 @@ const HistoryStatCard = ({ label, value, prefix, suffix, index }: { label: strin
   return (
     <div ref={ref} className="text-center">
       <p className="text-navy-deep/50 text-sm mb-2">{label}</p>
-      <div className="font-display text-4xl font-bold text-navy-deep">
+      <div className="font-display text-4xl font-bold text-primary">
         {prefix}{count}{suffix}
       </div>
     </div>
