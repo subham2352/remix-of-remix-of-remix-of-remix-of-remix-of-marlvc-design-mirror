@@ -1,19 +1,32 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import maxMontrey from "@/assets/founders/max-montrey.jpg";
+import srinivasPai from "@/assets/founders/srinivas-pai.jpg";
+import matthewGill from "@/assets/founders/matthew-gill.jpg";
+import vinithaT from "@/assets/founders/vinitha-thiyagarajan.jpg";
+import victorMartin from "@/assets/founders/victor-martin.jpg";
+import shayWilliams from "@/assets/founders/shay-williams.jpg";
+import abhraBanerjee from "@/assets/founders/abhra-banerjee.jpg";
+import davidHojah from "@/assets/founders/david-hojah.jpg";
+import aliSalem from "@/assets/founders/ali-salem.jpg";
+import sonerMatt from "@/assets/founders/soner-matt.jpg";
+import adamBeal from "@/assets/founders/adam-beal.jpg";
+import noamHeimann from "@/assets/founders/noam-heimann.jpg";
+
 const founders = [
-  { name: "Max Montrey", company: "SportsTrace" },
-  { name: "Srinivas K. Pai", company: "Pace Robotics" },
-  { name: "Matthew Gill", company: "Enhance-VR Inc." },
-  { name: "Vinitha Thiyagarajan", company: "Perceive Now" },
-  { name: "Victor Martin", company: "Macco" },
-  { name: "Shay Williams", company: "The Merch Kit" },
-  { name: "Abhra Banerjee", company: "Cleanomatics" },
-  { name: "David Hojah", company: "Parrots Inc." },
-  { name: "Ali Salem", company: "FlyUpav" },
-  { name: "Soner Matt", company: "Haci I-Ness" },
-  { name: "Adam Beal", company: "Awayr AI" },
-  { name: "Noam Heimann", company: "FeatherCloud" },
+  { name: "Max Montrey", company: "SportsTrace", img: maxMontrey },
+  { name: "Srinivas K. Pai", company: "Pace Robotics", img: srinivasPai },
+  { name: "Matthew Gill", company: "Enhance-VR Inc.", img: matthewGill },
+  { name: "Vinitha Thiyagarajan", company: "Perceive Now", img: vinithaT },
+  { name: "Victor Martin", company: "Macco", img: victorMartin },
+  { name: "Shay Williams", company: "The Merch Kit", img: shayWilliams },
+  { name: "Abhra Banerjee", company: "Cleanomatics", img: abhraBanerjee },
+  { name: "David Hojah", company: "Parrots Inc.", img: davidHojah },
+  { name: "Ali Salem", company: "FlyUpav", img: aliSalem },
+  { name: "Soner Matt", company: "Haci I-Ness", img: sonerMatt },
+  { name: "Adam Beal", company: "Awayr AI", img: adamBeal },
+  { name: "Noam Heimann", company: "FeatherCloud", img: noamHeimann },
   { name: "Ashutosh Srivastava", company: "WeConvert" },
   { name: "Ricardo Ortiz Sordo", company: "Logiety" },
   { name: "Ewelina Robaczek", company: "Vouchery.io" },
@@ -66,10 +79,14 @@ const FoundersSection = () => {
                 to="/portfolio"
                 className="group block bg-muted rounded-xl overflow-hidden hover:shadow-lg transition-all border border-border hover:border-primary/30"
               >
-                <div className="aspect-square bg-gradient-to-br from-navy-deep to-navy flex items-center justify-center">
-                  <span className="text-3xl font-display font-bold text-white/15 group-hover:text-primary/25 transition-colors">
-                    {founder.name.split(" ").map(n => n[0]).join("")}
-                  </span>
+                <div className="aspect-square bg-gradient-to-br from-navy-deep to-navy flex items-center justify-center overflow-hidden">
+                  {(founder as any).img ? (
+                    <img src={(founder as any).img} alt={founder.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  ) : (
+                    <span className="text-3xl font-display font-bold text-white/15 group-hover:text-primary/25 transition-colors">
+                      {founder.name.split(" ").map(n => n[0]).join("")}
+                    </span>
+                  )}
                 </div>
                 <div className="p-3">
                   <h3 className="text-navy-deep font-semibold text-xs">{founder.name}</h3>
