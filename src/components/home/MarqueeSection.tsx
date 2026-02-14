@@ -7,7 +7,7 @@ const MarqueeSection = () => {
 
   return (
     <section id="invest-in" className="py-16 bg-white overflow-hidden">
-      <h2 className="font-display text-3xl md:text-5xl font-bold text-navy-deep text-center mb-12">
+      <h2 className="font-display text-3xl md:text-5xl font-medium text-navy-deep text-center mb-12">
         WE INVEST IN
       </h2>
       <div className="mb-4">
