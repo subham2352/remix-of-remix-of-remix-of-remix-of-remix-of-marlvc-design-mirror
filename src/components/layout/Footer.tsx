@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center">
-              <img src={marlLogo} alt="MARL Accelerator" className="h-10 w-auto" />
+              <img src={marlLogo} alt="MARL Accelerator" className="h-8 w-auto" />
             </Link>
             <div className="flex gap-3 pt-2">
               <a href="https://www.linkedin.com/company/marl/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-navy-deep/10 hover:bg-primary hover:text-white transition-colors flex items-center justify-center text-navy-deep/50">
