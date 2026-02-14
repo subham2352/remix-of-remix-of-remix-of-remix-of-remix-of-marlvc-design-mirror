@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { mentors } from "@/data/mentorsData";
 
 import amirKhan from "@/assets/team/amir-khan.avif";
 import prakashGoswami from "@/assets/team/prakash-goswami.avif";
