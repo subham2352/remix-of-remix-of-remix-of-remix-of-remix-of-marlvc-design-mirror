@@ -45,7 +45,15 @@ const Footer = () => {
             </div>
           </div>
 
-
+          {/* Contact Us */}
+          <div className="space-y-4">
+            <h4 className="text-navy-deep font-display font-semibold text-sm">Contact Us</h4>
+            <div className="space-y-2">
+              <a href="mailto:Help@marlvc.org" className="block text-sm hover:text-primary transition-colors">Help@marlvc.org</a>
+              <a href="mailto:support@marlvc.org" className="block text-sm hover:text-primary transition-colors">support@marlvc.org</a>
+              <a href="mailto:infot@marlvc.org" className="block text-sm hover:text-primary transition-colors">infot@marlvc.org</a>
+            </div>
+          </div>
 
         </div>
 

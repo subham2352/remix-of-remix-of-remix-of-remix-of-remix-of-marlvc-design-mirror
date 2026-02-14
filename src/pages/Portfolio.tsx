@@ -4,8 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { X } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
 import { companyLogos } from "@/data/portfolioLogos";
+import { companyDetails } from "@/data/companyDetails";
 
 const companies = [
   { name: "Advanced Robotics", desc: "Developing a Robotic system to help pharmacy store owners autonomously dispense medications", cohort: "Cohort 1" },
@@ -216,6 +217,7 @@ const Portfolio = () => {
                         src={companyLogos[company.name]} 
                         alt={company.name}
                         className="max-w-full max-h-full object-contain"
+                        referrerPolicy="no-referrer"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.style.display = 'none';
@@ -299,6 +301,7 @@ const Portfolio = () => {
                       src={companyLogos[selectedCompany.name]} 
                       alt={selectedCompany.name}
                       className="max-w-[200px] max-h-[100px] object-contain mx-auto mb-4"
+                      referrerPolicy="no-referrer"
                     />
                   ) : (
                     <div className="w-20 h-20 bg-[#fafafa] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -313,42 +316,59 @@ const Portfolio = () => {
                 </div>
 
                 {/* Company details */}
-                <div className="space-y-4 text-left">
-                  <div className="border-b border-gray-200 pb-3">
-                    <span className="text-gray-500 text-sm font-medium">Cohort:</span>
-                    <span className="ml-2 text-navy-deep">{selectedCompany.cohort.replace("Cohort ", "")}</span>
-                  </div>
-                  
-                  <div className="border-b border-gray-200 pb-3">
-                    <span className="text-gray-500 text-sm font-medium">Name of the founder:</span>
-                    <span className="ml-2 text-navy-deep">To be updated</span>
-                  </div>
-                  
-                  <div className="border-b border-gray-200 pb-3">
-                    <span className="text-gray-500 text-sm font-medium">Vertical:</span>
-                    <span className="ml-2 text-navy-deep">Enterprise Technology</span>
-                  </div>
-                  
-                  <div className="border-b border-gray-200 pb-3">
-                    <span className="text-gray-500 text-sm font-medium">Description:</span>
-                    <span className="ml-2 text-navy-deep block mt-1">{selectedCompany.desc}</span>
-                  </div>
-                  
-                  <div className="border-b border-gray-200 pb-3">
-                    <span className="text-gray-500 text-sm font-medium">Contact email:</span>
-                    <span className="ml-2 text-navy-deep">info@example.com</span>
-                  </div>
-                  
-                  <div className="border-b border-gray-200 pb-3">
-                    <span className="text-gray-500 text-sm font-medium">Website:</span>
-                    <span className="ml-2 text-navy-deep">www.example.com</span>
-                  </div>
-                  
-                  <div>
-                    <span className="text-gray-500 text-sm font-medium">Operations location:</span>
-                    <span className="ml-2 text-navy-deep">United States</span>
-                  </div>
-                </div>
+                {(() => {
+                  const details = companyDetails[selectedCompany.name];
+                  return (
+                    <div className="space-y-4 text-left">
+                      <div className="border-b border-gray-200 pb-3">
+                        <span className="text-gray-500 text-sm font-medium">Cohort:</span>
+                        <span className="ml-2 text-navy-deep">{selectedCompany.cohort.replace("Cohort ", "")}</span>
+                      </div>
+                      
+                      <div className="border-b border-gray-200 pb-3">
+                        <span className="text-gray-500 text-sm font-medium">Name of the founder:</span>
+                        <span className="ml-2 text-navy-deep">{details?.founder || "—"}</span>
+                      </div>
+                      
+                      <div className="border-b border-gray-200 pb-3">
+                        <span className="text-gray-500 text-sm font-medium">Vertical:</span>
+                        <span className="ml-2 text-navy-deep">{details?.vertical || "Enterprise Technology"}</span>
+                      </div>
+                      
+                      <div className="border-b border-gray-200 pb-3">
+                        <span className="text-gray-500 text-sm font-medium">Description:</span>
+                        <span className="ml-2 text-navy-deep block mt-1">{selectedCompany.desc}</span>
+                      </div>
+                      
+                      <div className="border-b border-gray-200 pb-3">
+                        <span className="text-gray-500 text-sm font-medium">Website:</span>
+                        {details?.website ? (
+                          <a href={details.website} target="_blank" rel="noopener noreferrer" className="ml-2 text-primary hover:underline inline-flex items-center gap-1">
+                            {details.website.replace("https://", "")} <ExternalLink size={12} />
+                          </a>
+                        ) : (
+                          <span className="ml-2 text-navy-deep">—</span>
+                        )}
+                      </div>
+
+                      <div className="border-b border-gray-200 pb-3">
+                        <span className="text-gray-500 text-sm font-medium">Operations location:</span>
+                        <span className="ml-2 text-navy-deep">{details?.location || "United States"}</span>
+                      </div>
+
+                      <div>
+                        <a 
+                          href={details?.marlPage || "#"} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="inline-flex items-center gap-2 text-primary hover:text-primary/80 text-sm font-medium"
+                        >
+                          View on MARL <ExternalLink size={14} />
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             </motion.div>
           </motion.div>
