@@ -4,11 +4,16 @@ import { Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
+import amirKhan from "@/assets/team/amir-khan.avif";
+import prakashGoswami from "@/assets/team/prakash-goswami.avif";
+import danielaLugo from "@/assets/team/daniela-lugo.jpg";
+import jeffreyBekiares from "@/assets/team/jeffrey-bekiares.avif";
+
 const team = [
-  { name: "Amir Khan", role: "Managing Partner", linkedin: "https://www.linkedin.com/in/amirkhan177/" },
-  { name: "Prakash Goswami", role: "Managing Partner", linkedin: "https://www.linkedin.com/in/pgoswami/" },
-  { name: "Daniela Lugo", role: "Community Manager", linkedin: "https://www.linkedin.com/in/daniela-lugo-iturriza-6073b9152" },
-  { name: "Jeffrey Bekiares", role: "General Counsel", linkedin: "https://www.linkedin.com/in/jeffrey-bekiares-69b60761/" },
+  { name: "Amir Khan", role: "Managing Partner", linkedin: "https://www.linkedin.com/in/amirkhan177/", img: amirKhan },
+  { name: "Prakash Goswami", role: "Managing Partner", linkedin: "https://www.linkedin.com/in/pgoswami/", img: prakashGoswami },
+  { name: "Daniela Lugo", role: "Community Manager", linkedin: "https://www.linkedin.com/in/daniela-lugo-iturriza-6073b9152", img: danielaLugo },
+  { name: "Jeffrey Bekiares", role: "General Counsel", linkedin: "https://www.linkedin.com/in/jeffrey-bekiares-69b60761/", img: jeffreyBekiares },
 ];
 
 const About = () => {
@@ -50,10 +55,8 @@ const About = () => {
                 transition={{ delay: i * 0.08 }}
                 className="text-center"
               >
-                <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-navy-deep to-navy flex items-center justify-center mb-4">
-                  <span className="text-3xl font-display font-bold text-white/15">
-                    {member.name.split(" ").map((n) => n[0]).join("")}
-                  </span>
+                <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mb-4">
+                  <img src={member.img} alt={member.name} className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-display font-bold text-navy-deep">{member.name}</h3>
                 <p className="text-navy-deep/50 text-sm mb-3">{member.role}</p>
