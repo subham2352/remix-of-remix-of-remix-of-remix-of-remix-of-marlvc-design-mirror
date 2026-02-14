@@ -45,10 +45,10 @@ const StatCard = ({ label, value, suffix, index }: { label: string; value: numbe
       transition={{ delay: index * 0.1 }}
       className="text-center p-8"
     >
-      <p className="text-navy-deep/60 font-medium text-sm uppercase tracking-wider mb-2">{label}</p>
-      <div className="font-display text-5xl md:text-7xl font-bold text-navy-deep">
+      <div className="font-display text-5xl md:text-7xl font-bold text-primary mb-2">
         +{count}
       </div>
+      <p className="text-navy-deep font-medium text-base">{label}</p>
     </motion.div>
   );
 };
