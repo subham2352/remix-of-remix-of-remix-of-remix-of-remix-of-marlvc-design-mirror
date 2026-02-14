@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+// Row 1
 import maxMontrey from "@/assets/founders/max-montrey.jpg";
 import srinivasPai from "@/assets/founders/srinivas-pai.jpg";
 import matthewGill from "@/assets/founders/matthew-gill.jpg";
@@ -13,14 +13,34 @@ import aliSalem from "@/assets/founders/ali-salem.jpg";
 import sonerMatt from "@/assets/founders/soner-matt.jpg";
 import adamBeal from "@/assets/founders/adam-beal.jpg";
 import noamHeimann from "@/assets/founders/noam-heimann.jpg";
-import genMale1 from "@/assets/founders/gen-male-1.jpg";
-import genMale2 from "@/assets/founders/gen-male-2.jpg";
-import genMale3 from "@/assets/founders/gen-male-3.jpg";
-import genMale4 from "@/assets/founders/gen-male-4.jpg";
-import genFemale1 from "@/assets/founders/gen-female-1.jpg";
-import genFemale2 from "@/assets/founders/gen-female-2.jpg";
 
-const founders = [
+// Row 2
+import ashutoshS from "@/assets/founders/ashutosh-srivastava.png";
+import ricardoO from "@/assets/founders/ricardo-ortiz.png";
+import ewelinaR from "@/assets/founders/ewelina-robaczek.png";
+import michaelD from "@/assets/founders/michael-du.png";
+import bartS from "@/assets/founders/bart-slowik.png";
+import valentinP from "@/assets/founders/valentin-prijilevschi.png";
+import fatimaA from "@/assets/founders/fatima-awan.png";
+import samirH from "@/assets/founders/samir-hassan.png";
+import nathalieT from "@/assets/founders/nathalie-taquet.png";
+import michaelB from "@/assets/founders/michael-bingham.png";
+
+// Row 3
+import michaelG from "@/assets/founders/michael-gurevich.png";
+import volkerD from "@/assets/founders/volker-dahm.png";
+import taraR from "@/assets/founders/tara-robinson.png";
+import bhushanM from "@/assets/founders/bhushan-mishra.png";
+import havishS from "@/assets/founders/havish-sreenath.png";
+import steveS from "@/assets/founders/steve-scully.png";
+import nidaS from "@/assets/founders/nida-sahar.png";
+import lalitG from "@/assets/founders/lalit-gautam.png";
+import mithunA from "@/assets/founders/mithun-adith.png";
+import aparnaP from "@/assets/founders/aparna-pujar.png";
+import rohitS from "@/assets/founders/rohit-sharma.png";
+import navinJ from "@/assets/founders/navin-jethani.png";
+
+const row1 = [
   { name: "Max Montrey", company: "SportsTrace", img: maxMontrey },
   { name: "Srinivas K. Pai", company: "Pace Robotics", img: srinivasPai },
   { name: "Matthew Gill", company: "Enhance-VR Inc.", img: matthewGill },
@@ -33,53 +53,86 @@ const founders = [
   { name: "Soner Matt", company: "Haci I-Ness", img: sonerMatt },
   { name: "Adam Beal", company: "Awayr AI", img: adamBeal },
   { name: "Noam Heimann", company: "FeatherCloud", img: noamHeimann },
-  { name: "Ashutosh Srivastava", company: "WeConvert", img: genMale1 },
-  { name: "Ricardo Ortiz Sordo", company: "Logiety", img: genMale2 },
-  { name: "Ewelina Robaczek", company: "Vouchery.io", img: genFemale1 },
-  { name: "Michael Du", company: "Advanced Robotics", img: genMale3 },
-  { name: "Bart Slowik", company: "SylLab Systems Inc", img: genMale4 },
-  { name: "Fatima Awan", company: "Finiite Technologies Inc", img: genFemale2 },
 ];
+
+const row2 = [
+  { name: "Ashutosh Srivastava", company: "WeConvert", img: ashutoshS },
+  { name: "Ricardo Ortiz Sordo", company: "Logiety", img: ricardoO },
+  { name: "Ewelina Robaczek", company: "Vouchery.io", img: ewelinaR },
+  { name: "Michael Du", company: "Advanced Robotics", img: michaelD },
+  { name: "Bart Slowik", company: "SylLab Systems Inc", img: bartS },
+  { name: "Valentin Prijilevschi", company: "TechFlow", img: valentinP },
+  { name: "Fatima Awan", company: "Finiite Technologies", img: fatimaA },
+  { name: "Samir Hassan", company: "DataBridge", img: samirH },
+  { name: "Nathalie Taquet", company: "GreenPath", img: nathalieT },
+  { name: "Michael Bingham", company: "CloudSync", img: michaelB },
+];
+
+const row3 = [
+  { name: "Michael Gurevich", company: "TechVenture", img: michaelG },
+  { name: "Volker Dahm", company: "AutoDrive", img: volkerD },
+  { name: "Tara Robinson", company: "HealthAI", img: taraR },
+  { name: "B Bhushan Mishra", company: "SmartGrid", img: bhushanM },
+  { name: "Havish Sreenath", company: "RoboFlow", img: havishS },
+  { name: "Steve Scully", company: "NetSecure", img: steveS },
+  { name: "Nida Sahar", company: "EduTech", img: nidaS },
+  { name: "Lalit Gautam", company: "SenseGrass", img: lalitG },
+  { name: "Mithun Adith", company: "AeroTech", img: mithunA },
+  { name: "Aparna Pujar", company: "MedConnect", img: aparnaP },
+  { name: "Rohit Sharma", company: "FinFlow", img: rohitS },
+  { name: "Navin Jethani", company: "DataLens", img: navinJ },
+];
+
+type Founder = { name: string; company: string; img: string };
+
+const ScrollRow = ({ founders, direction }: { founders: Founder[]; direction: "left" | "right" }) => {
+  // Duplicate for seamless loop
+  const items = [...founders, ...founders];
+  const animClass = direction === "left" ? "animate-scroll-left" : "animate-scroll-right";
+
+  return (
+    <div className="overflow-hidden py-2">
+      <div className={`flex gap-4 ${animClass}`} style={{ width: "max-content" }}>
+        {items.map((founder, i) => (
+          <Link
+            key={`${founder.name}-${i}`}
+            to="/portfolio"
+            className="group flex-shrink-0 w-[160px] md:w-[180px] bg-white rounded-xl overflow-hidden hover:shadow-lg transition-all border border-border hover:border-primary/30"
+          >
+            <div className="aspect-square overflow-hidden">
+              <img
+                src={founder.img}
+                alt={founder.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+            <div className="p-3">
+              <h3 className="text-foreground font-semibold text-xs truncate">{founder.name}</h3>
+              <p className="text-muted-foreground text-xs truncate">{founder.company}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const FoundersSection = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-navy-deep">
+        <div className="text-center mb-12">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">
             MEET OUR COMMUNITY OF FOUNDERS
           </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {founders.map((founder, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.03 }}
-            >
-              <Link
-                to="/portfolio"
-                className="group block bg-muted rounded-xl overflow-hidden hover:shadow-lg transition-all border border-border hover:border-primary/30"
-              >
-                <div className="aspect-square bg-gradient-to-br from-navy-deep to-navy flex items-center justify-center overflow-hidden">
-                  <img src={founder.img} alt={founder.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                </div>
-                <div className="p-3">
-                  <h3 className="text-navy-deep font-semibold text-xs">{founder.name}</h3>
-                  <p className="text-muted-foreground text-xs">{founder.company}</p>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
         </div>
+      </div>
+
+      <div className="space-y-2">
+        <ScrollRow founders={row1} direction="left" />
+        <ScrollRow founders={row2} direction="right" />
+        <ScrollRow founders={row3} direction="left" />
       </div>
     </section>
   );
