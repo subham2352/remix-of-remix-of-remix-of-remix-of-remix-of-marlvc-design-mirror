@@ -1,27 +1,46 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "The accelerator program completely transformed how we approached our go-to-market strategy. The mentorship was invaluable.",
-    name: "Alex Chen",
-    title: "CEO, RoboFlow AI",
+    quote: "We learned a ton from MARL – from overall business tactics, product alignment, market fitting, and legal aspects. We felt very encouraged to participate and the discussions were open, resulting in more learning. We were given very constructive feedback on both our progress and our plans at SportsTrace, and we were able to expand our network both during the program and as a result of the program.",
+    name: "Max Montrey",
+    title: "Founder of SportsTrace",
   },
   {
-    quote: "Access to the investor network alone was worth it. We closed our Series A within 3 months of graduating the program.",
-    name: "Sarah Johnson",
-    title: "Founder, LogiChain",
+    quote: "As a long-term mentor and supporter of MARL, I am intrigued by their strong ethos of working hand-in-hand with founding teams and guiding them through the journey. Their hands-on guidance, strong focus on mobility and related sectors, entrepreneurial experience, excellent corporate and mentor network differentiates them from players.",
+    name: "Pratik Budhdev",
+    title: "Investment Director, Volvo",
   },
   {
-    quote: "The curriculum is incredibly well-structured. Every week brought new insights that directly impacted our growth trajectory.",
-    name: "Marcus Williams",
-    title: "CEO, CyberShield",
+    quote: "In just a few months with MARL 5G, we've already made substantial progress. Their mentors provide actionable insights from their own entrepreneurial journeys, and their robust investor network is highly aligned with our specific focus. The GTM framework they offer stands out for its efficacy, streamlining our path to market.",
+    name: "Hans Hansen",
+    title: "Founder of Brand3D",
   },
   {
-    quote: "Being part of this community means having a support system of founders who truly understand the journey.",
-    name: "Priya Patel",
-    title: "Co-Founder, MoveX",
+    quote: "Partnering with MARL 5G has been a transformative experience for our startup. Their invaluable guidance, coupled with their knack for introducing us to the right people, has propelled us forward. They're not just investors; they're visionary mentors who provide the inspiration and resources to turn dreams into reality.",
+    name: "Vinitha Thiyagarajan",
+    title: "Founder of PerceiveNow",
+  },
+  {
+    quote: "If you want practical hands-on training and mentorship on how to launch & scale up your start up in the 5G ecosystem, don't look elsewhere—MARL should be your automatic choice.",
+    name: "Abhra Banerjee",
+    title: "Founder of Cleanomatics",
+  },
+  {
+    quote: "MARL was a very productive journey for us, the best thing about the program is two entrepreneurs founders turn investor, Prakash, and Amir, they know what founders want, they have cherry-picked the session according to our needs, to the point, I recommend to all the founders working in 5G or deep tech technology.",
+    name: "Lalit Gautam",
+    title: "Founder of SenseGrass",
+  },
+  {
+    quote: "MARL is not your typical accelerator. Amir and Prakash are true partners — thoughtful, responsive, and deeply invested in your success. During the critical early stages, they offer insights that shape foundational decisions and help you move faster, smarter, and with greater conviction.",
+    name: "Samantha Tenus",
+    title: "CEO, Digipalz",
+  },
+  {
+    quote: "MARL Accelerator has been a game-changer for us at AIOHub. Their visionary guidance and extensive network have transformed our company, making us more agile and competitive. The mentors and partners are super friendly with extensive experience in the industry that helped us cover a lot of gaps as a beginning startup.",
+    name: "Vladimir Rigenco",
+    title: "AioHub Founder",
   },
 ];
 
@@ -31,12 +50,12 @@ const TestimonialsSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="py-20 bg-navy">
+    <section className="py-20 bg-muted">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,13 +63,12 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <p className="text-teal font-display text-sm uppercase tracking-[0.3em] mb-3">Testimonials</p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-white">
-            What Founders <span className="text-primary">Say</span>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-navy-deep">
+            WHAT OUR COMMUNITY IS SAYING
           </h2>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto relative">
+        <div className="max-w-4xl mx-auto relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -58,19 +76,18 @@ const TestimonialsSection = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.4 }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12 text-center"
+              className="bg-white rounded-2xl p-8 md:p-12 shadow-sm"
             >
-              <Quote className="mx-auto text-primary/30 mb-6" size={40} />
-              <p className="text-white text-lg md:text-xl leading-relaxed mb-8">
+              <p className="text-navy-deep/80 text-base md:text-lg leading-relaxed mb-8">
                 "{testimonials[current].quote}"
               </p>
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-teal flex items-center justify-center text-white font-bold">
                   {testimonials[current].name.charAt(0)}
                 </div>
-                <div className="text-left">
-                  <p className="text-white font-semibold">{testimonials[current].name}</p>
-                  <p className="text-white/50 text-sm">{testimonials[current].title}</p>
+                <div>
+                  <p className="text-navy-deep font-semibold">{testimonials[current].name}</p>
+                  <p className="text-navy-deep/50 text-sm">{testimonials[current].title}</p>
                 </div>
               </div>
             </motion.div>
@@ -82,7 +99,7 @@ const TestimonialsSection = () => {
                 key={i}
                 onClick={() => setCurrent(i)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  i === current ? "bg-primary w-6" : "bg-white/20"
+                  i === current ? "bg-primary w-6" : "bg-navy-deep/20"
                 }`}
               />
             ))}

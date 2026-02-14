@@ -1,69 +1,76 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Twitter } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-navy-deep text-white/70">
+    <footer className="bg-muted text-navy-deep/70">
       <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Brand */}
-          <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
+          <div className="lg:col-span-2 space-y-4">
+            <Link to="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-lg">V</span>
+                <span className="text-primary-foreground font-display font-bold text-lg">M</span>
               </div>
-              <span className="text-white font-display font-bold text-xl tracking-tight">
-                VENTURE<span className="text-primary">LAB</span>
-              </span>
+              <div className="flex flex-col leading-tight">
+                <span className="text-navy-deep font-display font-bold text-xl tracking-[0.15em]">MARL</span>
+                <span className="text-navy-deep/50 text-[10px] tracking-[0.1em]">accelerator</span>
+              </div>
             </Link>
-            <p className="text-sm leading-relaxed">
-              Investing in the next generation of founders reshaping the world of enterprise technology.
-            </p>
-            <div className="flex gap-3">
-              <a href="#" className="w-9 h-9 rounded-full bg-white/10 hover:bg-primary transition-colors flex items-center justify-center">
+            <div className="flex gap-3 pt-2">
+              <a href="https://www.linkedin.com/company/marl/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-navy-deep/10 hover:bg-primary hover:text-white transition-colors flex items-center justify-center text-navy-deep/50">
                 <Linkedin size={16} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-white/10 hover:bg-primary transition-colors flex items-center justify-center">
-                <Twitter size={16} />
+              <a href="https://twitter.com/AcceleratorMarl" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-navy-deep/10 hover:bg-primary hover:text-white transition-colors flex items-center justify-center text-navy-deep/50">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </a>
             </div>
+            <p className="text-xs">Made with ❤️ in San Francisco, CA</p>
           </div>
 
           {/* Programs */}
           <div className="space-y-4">
-            <h4 className="text-white font-display font-semibold text-sm uppercase tracking-wider">Programs</h4>
+            <h4 className="text-navy-deep font-display font-semibold text-sm">Programs</h4>
             <div className="space-y-2">
-              <Link to="/programs" className="block text-sm hover:text-white transition-colors">Accelerator Program</Link>
-              <Link to="/verticals" className="block text-sm hover:text-white transition-colors">Investment Verticals</Link>
-              <Link to="/demo-day" className="block text-sm hover:text-white transition-colors">Demo Day</Link>
+              <Link to="/programs" className="block text-sm hover:text-primary transition-colors">Accelerator</Link>
+              <Link to="/programs#studio" className="block text-sm hover:text-primary transition-colors">Studio</Link>
+              <Link to="/programs#faqs" className="block text-sm hover:text-primary transition-colors">FAQs</Link>
             </div>
           </div>
 
-          {/* Company */}
+          {/* Verticals */}
           <div className="space-y-4">
-            <h4 className="text-white font-display font-semibold text-sm uppercase tracking-wider">Company</h4>
+            <h4 className="text-navy-deep font-display font-semibold text-sm">Verticals</h4>
             <div className="space-y-2">
-              <Link to="/about" className="block text-sm hover:text-white transition-colors">About Us</Link>
-              <Link to="/portfolio" className="block text-sm hover:text-white transition-colors">Portfolio</Link>
-              <Link to="/resources" className="block text-sm hover:text-white transition-colors">Resources</Link>
+              <Link to="/verticals" className="block text-sm hover:text-primary transition-colors">Industry Verticals</Link>
             </div>
           </div>
 
-          {/* Apply */}
+          {/* About Us */}
           <div className="space-y-4">
-            <h4 className="text-white font-display font-semibold text-sm uppercase tracking-wider">Get Started</h4>
+            <h4 className="text-navy-deep font-display font-semibold text-sm">About Us</h4>
             <div className="space-y-2">
-              <Link to="/apply" className="block text-sm hover:text-white transition-colors">Apply Now</Link>
-              <a href="mailto:hello@venturelab.com" className="block text-sm hover:text-white transition-colors">Contact Us</a>
+              <Link to="/about" className="block text-sm hover:text-primary transition-colors">Our Team</Link>
+              <Link to="/about#mentors" className="block text-sm hover:text-primary transition-colors">Our Mentors</Link>
+              <Link to="/about#partners" className="block text-sm hover:text-primary transition-colors">Our Partners</Link>
+            </div>
+          </div>
+
+          {/* Resources */}
+          <div className="space-y-4">
+            <h4 className="text-navy-deep font-display font-semibold text-sm">Resources</h4>
+            <div className="space-y-2">
+              <Link to="/resources" className="block text-sm hover:text-primary transition-colors">Blog</Link>
+              <Link to="/resources#podcast" className="block text-sm hover:text-primary transition-colors">Podcast</Link>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs">© 2026 VentureLab. All rights reserved.</p>
+        <div className="mt-12 pt-8 border-t border-navy-deep/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs">Copyright © 2025 Marl Accelerator, LLC</p>
           <div className="flex gap-6 text-xs">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

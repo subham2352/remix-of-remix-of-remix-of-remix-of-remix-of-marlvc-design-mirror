@@ -1,28 +1,63 @@
 import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
-import { Bot, Truck, Brain, Shield, Car, Glasses } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Car, Glasses, Truck, Shield, Brain, Bot } from "lucide-react";
 
 const verticals = [
-  { icon: Bot, name: "Robotics", color: "from-primary/20 to-primary/5", desc: "Industrial automation, autonomous systems, collaborative robots, and robotic process automation.", areas: ["Industrial Automation", "Autonomous Systems", "Collaborative Robots", "RPA"] },
-  { icon: Truck, name: "Logistics", color: "from-teal/20 to-teal/5", desc: "Supply chain optimization, last-mile delivery, warehouse automation, and fleet management.", areas: ["Supply Chain", "Last-Mile Delivery", "Warehouse Automation", "Fleet Management"] },
-  { icon: Brain, name: "Artificial Intelligence", color: "from-primary/20 to-primary/5", desc: "Machine learning platforms, NLP, computer vision, and AI-powered enterprise solutions.", areas: ["ML Platforms", "NLP", "Computer Vision", "Enterprise AI"] },
-  { icon: Shield, name: "Cybersecurity", color: "from-teal/20 to-teal/5", desc: "Threat detection, identity management, cloud security, and zero-trust architectures.", areas: ["Threat Detection", "Identity Management", "Cloud Security", "Zero Trust"] },
-  { icon: Car, name: "Mobility", color: "from-primary/20 to-primary/5", desc: "Electric vehicles, autonomous driving, micro-mobility, and connected transportation.", areas: ["Electric Vehicles", "Autonomous Driving", "Micro-Mobility", "Connected Transport"] },
-  { icon: Glasses, name: "AR / VR", color: "from-teal/20 to-teal/5", desc: "Spatial computing, virtual collaboration, immersive training, and mixed reality enterprise tools.", areas: ["Spatial Computing", "Virtual Collaboration", "Immersive Training", "Mixed Reality"] },
+  {
+    icon: Car,
+    name: "MOBILITY",
+    desc: "We're constantly on the go. Whether it's through ride-hailing or bike-sharing, there's always a demand for mobility solutions.",
+    stat: "According to GVR, the 5G enterprise market is expected to experience significant growth, with projections estimating that it will reach $125 billion by 2025, up from $105 billion in 2018.",
+  },
+  {
+    icon: Glasses,
+    name: "VIRTUAL AND AUGMENTED REALITY",
+    desc: "A fresh approach to business operations. From virtual clothing try-ons to enterprise safety training, AR and VR are at the forefront of revolutionizing the way we work in a post-pandemic world.",
+    stat: "According to Businesswire, the market for AR and VR is expected to experience significant growth, with projections estimating that it will reach $1,274.4 billion by 2030, up from $37.0 billion in 2019.",
+  },
+  {
+    icon: Truck,
+    name: "LOGISTICS",
+    desc: "Logistics is an integral aspect of every business, present in every aspect of operations – from warehouse management to material handling equipment.",
+    stat: "According to IMARC group, the logistics market is expected to experience significant growth, with projections estimating that it will reach $6.3 trillion by 2024, up from $4.7 trillion in 2018.",
+  },
+  {
+    icon: Shield,
+    name: "CYBERSECURITY",
+    desc: "As we embrace the next wave of technology, cybersecurity has become increasingly important in safeguarding consumer and enterprise data from potential threats.",
+    stat: "According to Grandview Research, the cybersecurity market is expected to experience significant growth, with projections estimating that it will reach $372.04 billion by 2028, up from $179.96 billion in 2021.",
+  },
+  {
+    icon: Brain,
+    name: "NEXT-GEN ARTIFICIAL INTELLIGENCE",
+    desc: "Artificial intelligence is revolutionizing the way businesses operate. Predictive maintenance uses AI to anticipate equipment failures, preventing costly downtime. Fraud detection AI examines patterns to enhance financial security.",
+    stat: "According to a report by MarketsandMarkets, the global AI in business market size was valued at $2.1 billion in 2018 and is projected to reach $9.5 billion by 2024, at a CAGR of 33.2%.",
+  },
+  {
+    icon: Bot,
+    name: "ROBOTICS",
+    desc: "Robots are transforming industries, automating tasks, and improving efficiency. From manufacturing to healthcare, robotics is rapidly changing the way businesses operate.",
+    stat: "Enterprise Robotics Market (International Federation of Robotics): 2021: $16.5 billion → 2026: $22.1 billion.",
+  },
 ];
 
 const Verticals = () => {
   return (
     <Layout>
-      <section className="bg-navy-deep py-24 lg:py-32">
+      {/* Hero with teal gradient */}
+      <section className="bg-gradient-to-br from-teal to-teal/80 py-32 lg:py-44">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-            <p className="text-teal font-display text-sm uppercase tracking-[0.3em] mb-4">Investment Focus</p>
             <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
-              Our <span className="text-primary">Verticals</span>
+              INDUSTRY VERTICALS
             </h1>
-            <p className="text-white/60 text-lg leading-relaxed">
-              We invest across six key technology verticals that are transforming enterprise operations.
+            <p className="text-white/90 text-lg leading-relaxed font-medium">
+              We specialize in backing founders in specific industry sectors where we have a wealth of expertise.
+            </p>
+            <p className="text-white/80 text-lg leading-relaxed mt-4">
+              Our mentors and partners have the knowledge and experience to provide invaluable support to startups in the following sectors.
             </p>
           </motion.div>
         </div>
@@ -30,31 +65,45 @@ const Verticals = () => {
 
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-16">
             {verticals.map((v, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="group bg-muted rounded-2xl p-8 border border-border hover:border-primary/30 hover:shadow-lg transition-all"
+                transition={{ delay: i * 0.05 }}
+                className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}
               >
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${v.color} flex items-center justify-center mb-5`}>
-                  <v.icon className="text-primary" size={28} />
+                <div className={i % 2 === 1 ? "md:order-2" : ""}>
+                  <div className="w-16 h-16 rounded-xl bg-teal/10 flex items-center justify-center mb-5">
+                    <v.icon className="text-teal" size={32} />
+                  </div>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold text-navy-deep mb-4">{v.name}</h3>
+                  <p className="text-navy-deep/70 leading-relaxed mb-4">{v.desc}</p>
+                  <p className="text-navy-deep/50 text-sm leading-relaxed">{v.stat}</p>
                 </div>
-                <h3 className="font-display text-xl font-bold text-navy-deep mb-3">{v.name}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-5">{v.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {v.areas.map((area, j) => (
-                    <span key={j} className="text-xs bg-navy-deep/5 text-navy-deep/70 px-3 py-1 rounded-full">
-                      {area}
-                    </span>
-                  ))}
+                <div className={`aspect-video bg-gradient-to-br from-teal/20 to-teal/5 rounded-2xl flex items-center justify-center ${i % 2 === 1 ? "md:order-1" : ""}`}>
+                  <v.icon className="text-teal/30" size={80} />
                 </div>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-navy-deep text-center">
+        <div className="container mx-auto px-4 lg:px-8">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-4">
+            Are you ready to build next-gen tech?
+          </h2>
+          <p className="text-white/50 text-lg mb-8">
+            Application deadline March 20th, 2026 for Cohort 13th
+          </p>
+          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-10 rounded-full">
+            <Link to="/apply">Apply Now</Link>
+          </Button>
         </div>
       </section>
     </Layout>

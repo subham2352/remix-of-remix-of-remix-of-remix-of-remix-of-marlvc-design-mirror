@@ -16,15 +16,14 @@ const Apply = () => {
 
   return (
     <Layout>
-      <section className="bg-navy-deep py-24 lg:py-32">
+      <section className="bg-gradient-to-br from-teal to-teal/80 py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-            <p className="text-teal font-display text-sm uppercase tracking-[0.3em] mb-4">Apply Now</p>
             <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
-              Join Our <span className="text-primary">Next Cohort</span>
+              Apply Now
             </h1>
-            <p className="text-white/60 text-lg leading-relaxed">
-              Application deadline: March 31, 2026. Complete the form below to apply.
+            <p className="text-white/80 text-lg leading-relaxed">
+              Application deadline: March 20th, 2026 for Cohort 13th. Complete the form below to apply.
             </p>
           </motion.div>
         </div>
