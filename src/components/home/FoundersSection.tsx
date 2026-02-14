@@ -13,6 +13,12 @@ import aliSalem from "@/assets/founders/ali-salem.jpg";
 import sonerMatt from "@/assets/founders/soner-matt.jpg";
 import adamBeal from "@/assets/founders/adam-beal.jpg";
 import noamHeimann from "@/assets/founders/noam-heimann.jpg";
+import genMale1 from "@/assets/founders/gen-male-1.jpg";
+import genMale2 from "@/assets/founders/gen-male-2.jpg";
+import genMale3 from "@/assets/founders/gen-male-3.jpg";
+import genMale4 from "@/assets/founders/gen-male-4.jpg";
+import genFemale1 from "@/assets/founders/gen-female-1.jpg";
+import genFemale2 from "@/assets/founders/gen-female-2.jpg";
 
 const founders = [
   { name: "Max Montrey", company: "SportsTrace", img: maxMontrey },
@@ -27,28 +33,12 @@ const founders = [
   { name: "Soner Matt", company: "Haci I-Ness", img: sonerMatt },
   { name: "Adam Beal", company: "Awayr AI", img: adamBeal },
   { name: "Noam Heimann", company: "FeatherCloud", img: noamHeimann },
-  { name: "Ashutosh Srivastava", company: "WeConvert" },
-  { name: "Ricardo Ortiz Sordo", company: "Logiety" },
-  { name: "Ewelina Robaczek", company: "Vouchery.io" },
-  { name: "Michael Du", company: "Advanced Robotics" },
-  { name: "Bart Slowik", company: "SylLab Systems Inc" },
-  { name: "Valentin Prijilevschi", company: "TechSelf" },
-  { name: "Fatima Awan", company: "Finiite Technologies Inc" },
-  { name: "Samir Hassan", company: "Knowtified" },
-  { name: "Nathalie Taquet", company: "eBottli Inc" },
-  { name: "Michael Bingham", company: "Xiris Corp." },
-  { name: "Michael Gurevich", company: "TecTransit" },
-  { name: "Volker Dahm", company: "SafeDeploy" },
-  { name: "Tara Robinson", company: "Tracksracks" },
-  { name: "B Bhushan Mishra", company: "Fleksa" },
-  { name: "Havish Sreenath", company: "Infliction Labs" },
-  { name: "Steve Scully", company: "Thaddeus Medical System" },
-  { name: "Nida Sahar", company: "Nife Labs" },
-  { name: "Lalit Gautam", company: "SenseGrass" },
-  { name: "Mithun Adith", company: "SpotKwik" },
-  { name: "Aparna Pujar", company: "Zeemple" },
-  { name: "Rohit Sharma", company: "AiTS" },
-  { name: "Navin Jethani", company: "DisplayRide" },
+  { name: "Ashutosh Srivastava", company: "WeConvert", img: genMale1 },
+  { name: "Ricardo Ortiz Sordo", company: "Logiety", img: genMale2 },
+  { name: "Ewelina Robaczek", company: "Vouchery.io", img: genFemale1 },
+  { name: "Michael Du", company: "Advanced Robotics", img: genMale3 },
+  { name: "Bart Slowik", company: "SylLab Systems Inc", img: genMale4 },
+  { name: "Fatima Awan", company: "Finiite Technologies Inc", img: genFemale2 },
 ];
 
 const FoundersSection = () => {
@@ -67,7 +57,7 @@ const FoundersSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {founders.slice(0, 18).map((founder, i) => (
+          {founders.map((founder, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -80,13 +70,7 @@ const FoundersSection = () => {
                 className="group block bg-muted rounded-xl overflow-hidden hover:shadow-lg transition-all border border-border hover:border-primary/30"
               >
                 <div className="aspect-square bg-gradient-to-br from-navy-deep to-navy flex items-center justify-center overflow-hidden">
-                  {(founder as any).img ? (
-                    <img src={(founder as any).img} alt={founder.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                  ) : (
-                    <span className="text-3xl font-display font-bold text-white/15 group-hover:text-primary/25 transition-colors">
-                      {founder.name.split(" ").map(n => n[0]).join("")}
-                    </span>
-                  )}
+                  <img src={founder.img} alt={founder.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                 </div>
                 <div className="p-3">
                   <h3 className="text-navy-deep font-semibold text-xs">{founder.name}</h3>

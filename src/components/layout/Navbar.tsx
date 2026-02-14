@@ -58,7 +58,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={marlLogo} alt="MARL Accelerator" className="h-10 lg:h-12 w-auto" />
+            <img src={marlLogo} alt="MARL Accelerator" className="h-12 lg:h-16 w-auto" />
           </Link>
 
           {/* Desktop Nav */}

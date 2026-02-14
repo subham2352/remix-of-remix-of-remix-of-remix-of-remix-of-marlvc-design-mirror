@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import WorldMap from "./WorldMap";
 
 const HeroSection = () => {
   return (
     <section className="relative bg-white min-h-[90vh] flex items-center overflow-hidden">
+      <WorldMap />
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-5xl">
           <motion.div
