@@ -7,6 +7,14 @@ import marlLogo from "@/assets/marl-logo.avif";
 
 const navLinks = [
   {
+    label: "Programs",
+    href: "/programs",
+    dropdown: [
+      { label: "Accelerator", href: "/programs/accelerator" },
+      { label: "Studio", href: "/programs/studio" },
+    ],
+  },
+  {
     label: "Our Portfolio",
     href: "/portfolio",
   },
@@ -14,9 +22,9 @@ const navLinks = [
     label: "About Us",
     href: "/about",
     dropdown: [
-      { label: "Our Team", href: "/about" },
-      { label: "Our Mentors", href: "/about#mentors" },
-      { label: "Our Partners", href: "/about#partners" },
+      { label: "Our Team", href: "/team" },
+      { label: "Our Mentors", href: "/mentors" },
+      { label: "Our Partners", href: "/partners" },
     ],
   },
   { label: "Demo Day", href: "/demo-day" },

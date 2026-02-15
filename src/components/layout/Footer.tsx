@@ -27,21 +27,18 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-navy-deep font-display font-semibold text-sm">Programs</h4>
             <div className="space-y-2">
-              <Link to="/programs" className="block text-sm hover:text-primary transition-colors">Accelerator</Link>
-              <Link to="/programs#studio" className="block text-sm hover:text-primary transition-colors">Studio</Link>
-              <Link to="/programs#faqs" className="block text-sm hover:text-primary transition-colors">FAQs</Link>
+              <Link to="/programs/accelerator" className="block text-sm hover:text-primary transition-colors">Accelerator</Link>
+              <Link to="/programs/studio" className="block text-sm hover:text-primary transition-colors">Studio</Link>
             </div>
           </div>
-
-
 
           {/* About Us */}
           <div className="space-y-4">
             <h4 className="text-navy-deep font-display font-semibold text-sm">About Us</h4>
             <div className="space-y-2">
-              <Link to="/about" className="block text-sm hover:text-primary transition-colors">Our Team</Link>
-              <Link to="/about#mentors" className="block text-sm hover:text-primary transition-colors">Our Mentors</Link>
-              <Link to="/about#partners" className="block text-sm hover:text-primary transition-colors">Our Partners</Link>
+              <Link to="/team" className="block text-sm hover:text-primary transition-colors">Our Team</Link>
+              <Link to="/mentors" className="block text-sm hover:text-primary transition-colors">Our Mentors</Link>
+              <Link to="/partners" className="block text-sm hover:text-primary transition-colors">Our Partners</Link>
             </div>
           </div>
 
@@ -54,7 +51,6 @@ const Footer = () => {
               <a href="mailto:info@marlvc.org" className="block text-sm hover:text-primary transition-colors">info@marlvc.org</a>
             </div>
           </div>
-
         </div>
 
         <div className="mt-12 pt-8 border-t border-navy-deep/10 flex flex-col md:flex-row justify-between items-center gap-4">
