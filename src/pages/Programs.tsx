@@ -2,126 +2,75 @@ import Layout from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Check, Calendar, Users, DollarSign, Lightbulb, Rocket } from "lucide-react";
+import { Rocket, Palette } from "lucide-react";
 
-const timeline = [
-  { week: "Week 1-2", title: "Onboarding & Assessment", desc: "Deep-dive into your business, product, and market. Set goals and milestones." },
-  { week: "Week 3-4", title: "Product & Market Fit", desc: "Refine your value proposition and validate product-market fit with industry experts." },
-  { week: "Week 5-6", title: "Growth Strategy", desc: "Develop go-to-market strategy, sales playbooks, and growth frameworks." },
-  { week: "Week 7-8", title: "Fundraising Prep", desc: "Pitch deck refinement, financial modeling, and investor targeting." },
-  { week: "Week 9-10", title: "Investor Meetings", desc: "Curated introductions to 15+ VC partners and strategic investors." },
-  { week: "Week 11-12", title: "Demo Day & Launch", desc: "Showcase your company to 200+ investors, partners, and industry leaders." },
-];
-
-const benefits = [
-  { icon: DollarSign, title: "$50K Pre-Seed Investment", desc: "Non-dilutive funding to accelerate growth" },
-  { icon: Users, title: "Mentorship Network", desc: "80+ industry mentors and advisors" },
-  { icon: Lightbulb, title: "$500K in Perks", desc: "Cloud credits, tools, and services" },
-  { icon: Rocket, title: "Demo Day Access", desc: "Present to 200+ investors and partners" },
+const programs = [
+  {
+    icon: Rocket,
+    title: "Accelerator",
+    desc: "Our flagship 12-week program for early-stage enterprise tech founders. Includes $50K investment, mentorship, and Demo Day access.",
+    href: "/programs/accelerator",
+  },
+  {
+    icon: Palette,
+    title: "Studio",
+    desc: "A flexible, tailored program for founders who need hands-on support, mentorship, and resources outside the traditional cohort model.",
+    href: "/programs/studio",
+  },
 ];
 
 const Programs = () => {
   return (
     <Layout>
-      {/* Hero */}
       <section className="bg-navy-deep py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-            <p className="text-teal font-display text-sm uppercase tracking-[0.3em] mb-4">Our Programs</p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
-              12-Week <span className="text-primary">Accelerator</span> Program
-            </h1>
+            <p className="text-teal font-display text-sm uppercase tracking-[0.3em] mb-4">What We Offer</p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">Our Programs</h1>
             <p className="text-white/60 text-lg leading-relaxed">
-              Our flagship program is designed to help early-stage enterprise tech founders build, scale, and raise funding.
+              We offer two distinct programs tailored to founders at different stages. Explore the right path for your startup journey.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Benefits */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-navy-deep mb-12">
-            Program <span className="text-primary">Benefits</span>
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((b, i) => (
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {programs.map((p, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-muted rounded-xl p-6 border border-border hover:border-primary/30 transition-colors"
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <b.icon className="text-primary" size={24} />
-                </div>
-                <h3 className="font-display font-bold text-navy-deep mb-2">{b.title}</h3>
-                <p className="text-muted-foreground text-sm">{b.desc}</p>
+                <Link
+                  to={p.href}
+                  className="block bg-muted rounded-xl p-8 border border-border hover:border-primary/30 hover:shadow-lg transition-all text-center group h-full"
+                >
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+                    <p.icon className="text-primary" size={28} />
+                  </div>
+                  <h3 className="font-display font-bold text-navy-deep text-xl mb-3">{p.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">{p.desc}</p>
+                  <span className="text-primary font-semibold text-sm">Learn More →</span>
+                </Link>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-20 bg-navy-deep">
+      <section className="py-20 bg-navy-deep text-center">
         <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-12">
-            Program <span className="text-primary">Timeline</span>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-4">
+            Are you ready to build next-gen tech?
           </h2>
-          <div className="space-y-6">
-            {timeline.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="flex gap-6 items-start"
-              >
-                <div className="flex-shrink-0 w-24 text-right">
-                  <span className="text-primary font-display font-bold text-sm">{item.week}</span>
-                </div>
-                <div className="w-px bg-white/20 relative flex-shrink-0">
-                  <div className="w-3 h-3 rounded-full bg-primary absolute -left-[5px] top-1" />
-                </div>
-                <div className="pb-8">
-                  <h3 className="text-white font-semibold mb-1">{item.title}</h3>
-                  <p className="text-white/50 text-sm">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Eligibility */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy-deep mb-8">
-              Eligibility <span className="text-primary">Criteria</span>
-            </h2>
-            <div className="text-left space-y-4">
-              {[
-                "Early-stage enterprise technology company",
-                "Working product or MVP",
-                "Full-time founding team (2+ members)",
-                "Less than $2M in total funding raised",
-                "Scalable business model with clear market opportunity",
-              ].map((item, i) => (
-                <div key={i} className="flex gap-3 items-start">
-                  <Check className="text-teal flex-shrink-0 mt-0.5" size={18} />
-                  <span className="text-navy-deep/80">{item}</span>
-                </div>
-              ))}
-            </div>
-            <Button asChild size="lg" className="mt-10 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8">
-              <Link to="/apply">Apply Now</Link>
-            </Button>
-          </div>
+          <p className="text-white/50 text-lg mb-8">Application deadline March 20th, 2026 for Cohort 13th</p>
+          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-10 rounded-full">
+            <Link to="/apply">Apply Now</Link>
+          </Button>
         </div>
       </section>
     </Layout>
