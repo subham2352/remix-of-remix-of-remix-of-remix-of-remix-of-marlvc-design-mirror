@@ -170,6 +170,52 @@ const About = () => {
         </div>
       </section>
 
+      {/* Mentors */}
+      <section id="mentors" className="py-20 bg-white">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy-deep mb-4">OUR MENTORS</h2>
+            <p className="text-navy-deep/60 max-w-3xl mx-auto">
+              Our mentors are experienced founders, investors, and industry leaders who provide guidance and support to our cohort companies.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {mentors.map((mentor, i) => (
+              <div
+                key={i}
+                className="group text-center"
+              >
+                <div className="w-28 h-28 mx-auto rounded-full overflow-hidden mb-3 border-2 border-border group-hover:border-primary transition-colors">
+                  <img
+                    src={mentor.photo}
+                    alt={mentor.name}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        parent.classList.add('bg-gradient-to-br', 'from-primary', 'to-teal', 'flex', 'items-center', 'justify-center');
+                        parent.innerHTML = `<span class="text-white font-bold text-2xl">${mentor.name.charAt(0)}</span>`;
+                      }
+                    }}
+                  />
+                </div>
+                <h3 className="font-display font-bold text-navy-deep text-sm">{mentor.name}</h3>
+                <p className="text-muted-foreground text-xs mb-2">{mentor.company}</p>
+                {mentor.linkedin && (
+                  <a href={mentor.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex w-7 h-7 rounded-full bg-navy-deep/10 hover:bg-primary hover:text-white transition-colors items-center justify-center text-navy-deep/50">
+                    <Linkedin size={12} />
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-navy-deep text-center">
         <div className="container mx-auto px-4 lg:px-8">

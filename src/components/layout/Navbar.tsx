@@ -15,6 +15,7 @@ const navLinks = [
     href: "/about",
     dropdown: [
       { label: "Our Team", href: "/about" },
+      { label: "Our Mentors", href: "/about#mentors" },
       { label: "Our Partners", href: "/about#partners" },
     ],
   },
