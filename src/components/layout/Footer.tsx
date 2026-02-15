@@ -13,12 +13,12 @@ const Footer = () => {
               <img src={marlLogo} alt="MARL Accelerator" className="w-[175px] h-auto" />
             </Link>
             <div className="flex gap-3 pt-2">
-              <a href="https://www.linkedin.com/company/marl/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-navy-deep/10 hover:bg-primary hover:text-white transition-colors flex items-center justify-center text-navy-deep/50">
+              <span className="w-9 h-9 rounded-full bg-navy-deep/10 flex items-center justify-center text-navy-deep/50">
                 <Linkedin size={16} />
-              </a>
-              <a href="https://twitter.com/AcceleratorMarl" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-navy-deep/10 hover:bg-primary hover:text-white transition-colors flex items-center justify-center text-navy-deep/50">
+              </span>
+              <span className="w-9 h-9 rounded-full bg-navy-deep/10 flex items-center justify-center text-navy-deep/50">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
+              </span>
             </div>
             <p className="text-xs">Made with ❤️ in San Francisco, CA</p>
           </div>
@@ -51,7 +51,7 @@ const Footer = () => {
             <div className="space-y-2">
               <a href="mailto:Help@marlvc.org" className="block text-sm hover:text-primary transition-colors">Help@marlvc.org</a>
               <a href="mailto:support@marlvc.org" className="block text-sm hover:text-primary transition-colors">support@marlvc.org</a>
-              <a href="mailto:infot@marlvc.org" className="block text-sm hover:text-primary transition-colors">infot@marlvc.org</a>
+              <a href="mailto:info@marlvc.org" className="block text-sm hover:text-primary transition-colors">info@marlvc.org</a>
             </div>
           </div>
 
